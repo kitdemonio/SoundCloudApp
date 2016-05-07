@@ -1,0 +1,109 @@
+// Variables
+@import "./variables.scss";
+// Variables
+
+// Animation
+@keyframes fadeIn {
+   0% {
+      opacity:0;
+   }
+   100%{
+      opacity:1;
+   }
+}
+// Animation
+
+.login-form {
+   border-radius: 5px;
+   width: 350px;
+   height: 420px;
+   text-transform: uppercase;
+   margin:10% auto;
+   padding-top: 20px;
+   background-color: $primary-color;
+   box-shadow:8px 8px rgba(74, 20, 140,0.5);
+   animation-name: fadeIn;
+   animation-duration: 1s;
+   h1{
+      color:white;
+      text-align: center;
+      font-weight: 400;
+      font-size: 36px;
+   }
+   form {
+      width: 250px;
+      margin: 20% 50px 25% 50px;
+   }
+   input {
+      border: 5px solid $primary-color;
+      margin-bottom: 30px;
+      outline: none;
+      width: 100%;
+      height: 25px;
+      display: block;
+      font-size: 16px;
+      font-weight: 300;
+      font-family: $primary-font;
+      letter-spacing: 0.3px;
+      -webkit-appearance: none;
+         -moz-appearance: none;
+          -ms-appearance: none;
+           -o-appearance: none;
+              appearance: none;
+      transition: all ease-out 0.25s;
+      &:focus {
+         border: 5px solid $second-color;
+      }
+   }
+   .icon{
+      float:left;
+      display: block;
+      width: 20px;
+      height: 20px;
+      position: relative;
+      left: -28px;
+      top: 28px;
+   }
+   .icon-email {
+      background: url(../img/icons/cd-icon-email.svg) no-repeat;
+   }
+   .icon-password {
+      background: url(../img/icons/cd-icon-password.svg) no-repeat;
+   }
+   .btn-submit {
+      position: relative;
+      right: -17px;
+      bottom: -52px;
+      float: right;
+      font-family: $primary-font;
+      color:#fff;
+      font-size: 16px;
+      margin-right: -5px;
+      font-weight: 300;
+      text-transform: uppercase;
+      background: none;
+      border:none;
+      width: 100px;
+      height: 30px;
+      cursor: pointer;
+      outline: none;
+      -webkit-appearance: none;
+         -moz-appearance: none;
+          -ms-appearance: none;
+           -o-appearance: none;
+              appearance: none;
+
+   }
+   .create-account{
+      float:left;
+      margin-left:28px;
+      width:150px;
+      height: 25px;
+      a {
+         color:#fff;
+         text-decoration: none;
+         display: block;
+
+      }
+   }
+}

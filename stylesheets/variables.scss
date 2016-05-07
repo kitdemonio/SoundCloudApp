@@ -1,0 +1,15 @@
+$primary-color:#fff;
+$second-color:#A9B9B5;
+$background-color:#F2F4F8;
+$primary-color-900:#fff;
+$header-profile-text-color:#191919;
+$primary-font:'Roboto Condensed', sans-serif;
+
+
+@mixin appearance {
+   -webkit-appearance: none;
+      -moz-appearance: none;
+       -ms-appearance: none;
+        -o-appearance: none;
+           appearance: none;
+}

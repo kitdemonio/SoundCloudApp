@@ -1,0 +1,25 @@
+@import "./variables.scss";
+// Common styles
+
+* {
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   width: 100%;
+   background: $background-color;
+   color: #fff;
+   font-family: $primary-font;
+   font-weight: 300;
+}
+
+li {
+   list-style-type: none;
+}
+
+.hidden {
+   display: none !important;
+}
+
+// Common styles

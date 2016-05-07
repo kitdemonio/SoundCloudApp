@@ -1,0 +1,142 @@
+.header {
+  background: #fff;
+  width: 100%;
+  height: 60px;
+}
+.header .logo {
+  width: 70px;
+  height: 60px;
+  background: linear-gradient(#f70, #f30);
+}
+.header .logo a {
+  background: url("../img/cloud-e365a4.png") no-repeat 12px 17px;
+  width: 70px;
+  height: 60px;
+  display: block;
+}
+.header .search {
+  width: auto;
+  margin: 0 auto;
+  height: 60px;
+  line-height: 60px;
+  padding-left: 15px;
+}
+.header .search i {
+  margin-right: 10px;
+  color: #A9B9B5;
+  cursor: pointer;
+}
+.header .search input {
+  height: 59px;
+  font-size: 18px;
+  font-weight: 300;
+  font-family: "Roboto Condensed", sans-serif;
+  letter-spacing: 0.3px;
+  width: 300px;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  border: none;
+}
+.header .profile {
+  float: right;
+  height: 60px;
+  width: 250px;
+  line-height: 60px;
+  color: #191919;
+}
+.header .profile i, .header .profile span, .header .profile button {
+  display: inline-block;
+  padding-right: 15px;
+  cursor: pointer;
+}
+.header .profile button {
+  vertical-align: middle;
+  width: 100px;
+  height: 29px;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+}
+
+.logo, .search, .profile {
+  display: block;
+  float: left;
+}
+
+.active {
+  background: #323B42;
+}
+
+.nav-bar-left {
+  background: #232C32;
+  width: 70px;
+  float: left;
+  position: absolute;
+  height: calc(100% - 60px);
+}
+.nav-bar-left a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  display: block;
+  width: 70px;
+  height: 60px;
+  line-height: 60px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  word-break: normal;
+  letter-spacing: 0.3px;
+}
+.nav-bar-left li {
+  display: block;
+  width: 70px;
+  height: 60px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.nav-bar-left li i {
+  display: block;
+  width: 70px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.nav-bar-left li:hover {
+  background: #323B42;
+}
+.nav-bar-left li:hover i {
+  transform: translate(0, -40px);
+}
+.nav-bar-left li:hover a {
+  transform: translate(0, -60px);
+}
+
+.content {
+  padding-left: 80px;
+  padding-top: 10px;
+}
+.content iframe {
+  width: 512px;
+  margin-bottom: 10px;
+}
+
+.right-bar {
+  position: absolute;
+  right: 0;
+  background: #fff;
+  width: 240px;
+  height: 500px;
+}
+
+/*# sourceMappingURL=workflow.css.map */
