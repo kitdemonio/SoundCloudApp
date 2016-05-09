@@ -173,7 +173,7 @@ li {
   width: 70px;
   float: left;
   position: absolute;
-  height: calc(100% - 60px); }
+  height: 100vh; }
   .nav-bar-left a {
     text-decoration: none;
     color: #fff;
@@ -212,8 +212,11 @@ li {
   padding-left: 80px;
   padding-top: 10px; }
   .content iframe {
-    width: 512px;
-    margin-bottom: 10px; }
+    width: 100%;
+    margin: 0 auto;
+    display: block; }
+  .content ul li {
+    color: #000; }
 
 .right-bar {
   position: absolute;

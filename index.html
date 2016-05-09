@@ -1,87 +1,103 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html ng-app="SoundCloudApp">
+<head>
     <meta charset="UTF-8">
     <title>SoundCloud</title>
     <link rel="stylesheet" href="./stylesheets/main.css">
-    <script>/*window.$ = window.jQuery = require('./libs/jquery-2.2.2.min.js'); */</script>
+    <!--<script>window.$ = window.jQuery = require('./libs/jquery-2.2.2.min.js'); </script>-->
     <script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
+    <script>
+        SC.initialize({
+            client_id: '5b1a886e9f0436e0664ebe931d8c543a'
+        });
+    </script>
     <script src="./libs/api.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
+    <script src="./libs/angular.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+          media="screen" title="no title" charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700" rel="stylesheet" type="text/css">
-  </head>
-  <body>
+</head>
+<body ng-controller="appStreamCtrl">
 
-    <!-- <div class="login-form">
-      <h1>Log in</h1>
-      <form  method="post" onsubmit="return connect()">
-         <label for="login">Email<i class="icon icon-email"></i><input type="email" name="login" id="login"></label>
-         <label for="password">Password<i class="icon icon-password"></i><input type="password" name="password" id="password"></label>
-         <button type="submit" name="submit" class="btn btn-submit">Connect</button>
-      </form>
-      <div class="create-account">
-         <a target="_blank" href="https://soundcloud.com/connect?client_id=02gUJC0hH2ct1EGOcYXQIzRFU91c72Ea&response_type=token&scope=non-expiring%20fast-connect%20purchase%20upload&display=next&redirect_uri=https%3A//soundcloud.com/soundcloud-callback.html&highlight=signup">Create account</a>
-      </div>
-   </div> -->
-   <div class="workflow">
-      <div class="header">
-         <div class="logo">
+<!-- <div class="login-form">
+  <h1>Log in</h1>
+  <form  method="post" onsubmit="return connect()">
+     <label for="login">Email<i class="icon icon-email"></i><input type="email" name="login" id="login"></label>
+     <label for="password">Password<i class="icon icon-password"></i><input type="password" name="password" id="password"></label>
+     <button type="submit" name="submit" class="btn btn-submit">Connect</button>
+  </form>
+  <div class="create-account">
+     <a target="_blank" href="https://soundcloud.com/connect?client_id=02gUJC0hH2ct1EGOcYXQIzRFU91c72Ea&response_type=token&scope=non-expiring%20fast-connect%20purchase%20upload&display=next&redirect_uri=https%3A//soundcloud.com/soundcloud-callback.html&highlight=signup">Create account</a>
+  </div>
+</div> -->
+<div class="workflow">
+    <div class="header">
+        <div class="logo">
             <a href="#"></a>
-         </div>
-         <div class="search">
-            <form method="get" action="/search" >
-               <label for="search"><i class="fa fa-search"></i></label>
-               <input name="search-query" id="search" value="" placeholder="Search songs">
+        </div>
+        <div class="search">
+            <form method="get" action="/search">
+                <label for="search"><i class="fa fa-search"></i></label>
+                <input name="search-query" id="search" value="" placeholder="Search songs">
             </form>
-         </div>
-         <div class="profile">
+        </div>
+        <div class="profile">
             <i class="fa fa-bell-o"></i>
             <span id="profile_name">Mirador</span>
-            <button type="button" name="btn_signin" id="login"><img src="./img/btn-connect-l.png" alt="Connect"></button>
+            <button type="button" name="btn_signin" id="login"><img src="./img/btn-connect-l.png" alt="Connect">
+            </button>
             <button type="button" name="btn_logout" class="hidden">Logout</button>
-         </div>
-      </div>
-      <div class="nav-bar-left">
-         <ul>
+        </div>
+    </div>
+    <div class="nav-bar-left">
+        <ul>
             <li>
-               <i class="fa fa-music fa-lg active" style="color:#388E3C;" ></i>
-               <a href="#">Stream</a>
+                <i class="fa fa-music fa-lg active" style="color:#388E3C;"></i>
+                <a href="#">Stream</a>
             </li>
             <li>
-               <i class="fa fa-bars fa-lg" style="color:#FF6800;"></i>
-               <a href="#">Collection</a>
+                <i class="fa fa-bars fa-lg" style="color:#FF6800;"></i>
+                <a href="#">Collection</a>
             </li>
             <li>
-               <i class="fa fa-thumbs-o-up fa-lg" style="color:#0277BD;"></i>
-               <a href="#">Likes</a>
+                <i class="fa fa-thumbs-o-up fa-lg" style="color:#0277BD;"></i>
+                <a href="#">Likes</a>
             </li>
             <li>
-               <i class="fa fa-sliders fa-lg" style="color:#AB47BC;"></i>
-               <a href="#">Playlists</a>
+                <i class="fa fa-sliders fa-lg" style="color:#AB47BC;"></i>
+                <a href="#">Playlists</a>
             </li>
             <li>
-               <i class="fa fa-users fa-lg" style="color:#536DFE;"></i>
-               <a href="#">Fallowing</a>
+                <i class="fa fa-users fa-lg" style="color:#536DFE;"></i>
+                <a href="#">Fallowing</a>
             </li>
-         </ul>
-      </div>
-      <div class="content">
-         <div class="right-bar">
-            <div class="block block1"></div>
-            <div class="block block2"></div>
-         </div>
-         <iframe id="sc-widget"  height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/dw-learngerman/ein-ozeanriese-vom-land"></iframe>
-         <iframe id="sc-widget-2"  height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F1848538&show_artwork=true"></iframe>
-         <!-- <iframe id="sc-widget-1" src="https://w.soundcloud.com/player/?url=http://api.soundcloud.com/users/1539950/favorites" width="100%" height="465" scrolling="no" frameborder="no">
+        </ul>
+    </div>
+    <div class="content">
+        <!--<div class="right-bar">-->
+        <!--<div class="block block1"></div>-->
+        <!--<div class="block block2"></div>-->
+        <!--</div>-->
+        <!--<iframe id="sc-widget"  height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/dw-learngerman/ein-ozeanriese-vom-land"></iframe>-->
+        <!--<iframe id="sc-widget-2"  height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F1848538&show_artwork=true"></iframe>-->
+        <!-- <iframe id="sc-widget-1" src="https://w.soundcloud.com/player/?url=http://api.soundcloud.com/users/1539950/favorites" width="100%" height="465" scrolling="no" frameborder="no">
 
-         </iframe> -->
-         <ul id="results">
-            <li></li>
-         </ul>
-      </div>
+        </iframe> -->
+        <ul id="results" ng-repeat="track in tracks | limitTo:6">
+            <li>
+                <iframe id="sc-widget" width="100%" height="166" scrolling="no" frameborder="no" ng-src="{{track.url}}"></iframe>
+            </li>
+        </ul>
 
-   </div>
-   <script src="./libs/jquery-2.2.2.min.js" charset="utf-8"></script>
-   <script src="./application.js" charset="utf-8"></script>
-  </body>
+    </div>
+</div>
+<!--<script src="./libs/jquery-2.2.2.min.js" charset="utf-8"></script>-->
+
+<script src="./js/app.js" charset="utf-8"></script>
+<script src="./vendors/angular-soundcloud.js" charset="utf-8"></script>
+<script src="./js/controllers.js" charset="utf-8"></script>
+<script src="./js/services.js" charset="utf-8"></script>
+<script src="./js/directives.js" charset="utf-8"></script>
+<script src="./js/filters.js" charset="utf-8"></script>
+</body>
 </html>
