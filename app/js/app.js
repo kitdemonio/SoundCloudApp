@@ -1,0 +1,59 @@
+'use strict';
+
+var Remote          = window.require('remote');
+
+var React           = require('react');
+var Router          = require('react-router');
+
+var soundcloudappApp      = require('./components/soundcloudappApp');
+
+var About           = require('./components/aboutView');
+var Likes           = require('./components/likesView');
+var Feed            = require('./components/feedView');
+var Playlists       = require('./components/playlistsView');
+
+var Config          = Remote.require('./lib/config');
+var SoundCloud      = require('./utils/soundcloud');
+
+/**
+ * Router
+ */
+var Route  = Router.Route;
+var routes = (
+  <Route handler={soundcloudappApp} >
+    <Router.DefaultRoute name="feed" handler={Feed}/>
+    <Route name="likes" handler={Likes}/>
+    <Route name="playlists" handler={Playlists}/>
+    <Route name="about" handler={About}/>
+  </Route>
+);
+
+/**
+ * Start the router and render soundcloudapp
+ */
+function run() {
+  Router.run(routes, function(Root) {
+    React.render(<Root/>, document.getElementById('react'));
+  });
+}
+
+/**
+ * Configure the SoundCloud SDK
+ */
+Config.get('access_token', function(err, token) {
+
+  if (err)
+    throw err;
+
+  if (!token)
+    throw new Error('Refusing to initialize application, authentication token not found.')
+
+  SoundCloud.initialize({
+    'access_token' : token,
+    'client_id'    : 'f17c1d67b83c86194fad2b1948061c9e'
+  });
+
+  run();
+})
+
+module.exports = soundcloudappApp;

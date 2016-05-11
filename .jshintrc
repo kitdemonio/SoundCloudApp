@@ -1,0 +1,26 @@
+{
+    "node": true,
+    "bitwise": true,
+    "eqeqeq": true,
+    "immed": true,
+    "indent": 2,
+    "latedef": false,
+    "multistr": true,
+    "newcap": true,
+    "noarg": true,
+    "asi" : true,
+    "regexp": true,
+    "undef": true,
+    "unused": "vars",
+    "strict": true,
+    "trailing": true,
+    "smarttabs": false,
+    "laxcomma": true,
+    "laxbreak": true,
+    "white": true,
+    "globals": {
+        "document": true,
+        "window"  : true,
+        "Audio"   : true
+    }
+}

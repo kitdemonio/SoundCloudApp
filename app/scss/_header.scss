@@ -1,0 +1,45 @@
+/**
+ * Header styles
+ */
+header {
+  $height: 42px;
+  background-color: #333;
+
+  height: $height;
+  line-height: $height;
+
+  -webkit-font-smoothing: subpixel-antialiased;
+
+  ul {
+    width: 100%;
+    display: flex;
+  }
+
+  li { flex: 1; }
+
+  a {
+    display: block;
+    height: $height;
+
+    color: rgba(255, 255, 255, .6);
+    font-size: 13px;
+    font-weight: 500;
+
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 1);
+
+    letter-spacing: 0.5px;
+
+    transition: background-color 150ms;
+
+    &.active, &:hover { color: rgba(255, 255, 255, .85); }
+
+    &.active {
+      border-bottom: solid 2px #f50;
+    }
+  }
+
+}
+

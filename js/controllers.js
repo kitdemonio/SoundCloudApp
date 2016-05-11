@@ -2,15 +2,23 @@
 
 /* Controllers */
 SoundCloudApp.controller('appStreamCtrl', function ($scope, $timeout, $sce) {
-    SC.get('/tracks').then(function (tracks) {
+    SC.get('/tracks', {
+        title:	'Green day'
+    }).then(function (tracks) {
         $timeout(function() {
             $scope.tracks = tracks;
-            console.log(tracks);
             angular.forEach( $scope.tracks, function(track) {
-                track.url = $sce.trustAsResourceUrl('https://w.soundcloud.com/player/?url=' + track.uri +'&show_artwork=true');
+                track.url = $sce.trustAsResourceUrl('https://w.soundcloud.com/player/?url=' + track.uri +'&show_artwork=true&show_comments=true&show_user=true&show_playcount=true&download=false');
             });
         });
     });
+    $scope.signIn = function() {
+        SC.connect(function () {
+            SC.get("/me", function (response) {
+                console.log("Welcome" + response.username);
+            });
+        });
+    }
 });
 
 function embed (id) {
