@@ -7,9 +7,5 @@ var SoundCloudApp = angular.module('SoundCloudApp', [
 ]);
 
 function getLogin() {
-    SC.connect(function () {
-        SC.get("/me", function (response) {
-            console.log("Welcome" + response.username);
-        });
-    });
+    return null;
 }
