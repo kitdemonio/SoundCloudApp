@@ -36,3 +36,6 @@ app/js/bundle.js
 dist/
 
 gh-pages/
+
+.idea/
+.vscode/
